@@ -1,7 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  // specify which files apply tailwind CSS
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
+  darkMode: false,
   theme: {
+    extend: {},
+  },
+  variants: {
     extend: {},
   },
   plugins: [],
