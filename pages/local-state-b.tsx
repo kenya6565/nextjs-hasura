@@ -1,5 +1,5 @@
 import React from 'react'
-import LocalStateB from '../components/LocalStateA'
+import LocalStateB from '../components/LocalStateB'
 import { Layout } from '../components/Layout'
 
 const LocalStatePageB = () => {

@@ -23,9 +23,11 @@ const LocalStateA = () => {
     <>
       <p className="mb-3 font-bold">makeVar</p>
       {todos?.map((task, index) => {
-        ;<p className="mb-3 y-1" key={index}>
-          {task.title}
-        </p>
+        return (
+          <p className="mb-3 y-1" key={index}>
+            {task.title}
+          </p>
+        )
       })}
       <form
         className="flex flex-col justify-center items-center"
