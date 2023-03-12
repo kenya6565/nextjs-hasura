@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 export const LocalStateB = () => {
   const todos = useReactiveVar(todoVar)
-  console.log(todos)
   return (
     <>
       {todos?.map((task, index) => {
