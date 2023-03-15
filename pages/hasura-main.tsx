@@ -1,22 +1,32 @@
 import Link from 'next/link'
-import { useQuery } from '@apollo/client'
 import { GET_USERS } from '../queries/queries'
 import { GetUsersQuery } from '../types/generated/graphql'
 import { Layout } from '../components/Layout'
+import { GetServerSideProps } from 'next'
+import { initializeApollo } from '../lib/apolloClient'
 
-const FetchMain = () => {
-  const { data, error } = useQuery<GetUsersQuery>(GET_USERS)
-  if (error)
-    return (
-      <Layout title="Hasura fetchPolicy">
-        <p>Error: {error.message}</p>
-      </Layout>
-    )
+const client = initializeApollo()
+
+export const getServerSideProps: GetServerSideProps<
+  GetUsersQuery
+> = async () => {
+  const { data } = await client.query({
+    query: GET_USERS,
+  })
+
+  return {
+    props: {
+      ...data,
+    },
+  }
+}
+
+const FetchMain = ({ users }: GetUsersQuery) => {
   return (
     <Layout title="Hasura fetchPolicy">
       <p className="mb-6 font-bold">Hasura main page</p>
 
-      {data?.users.map((user) => {
+      {users.map((user) => {
         return (
           <p className="my-1" key={user.id}>
             {user.name}
