@@ -22,6 +22,12 @@ export const getServerSideProps: GetServerSideProps<
 }
 
 const FetchMain = ({ users }: GetUsersQuery) => {
+  if (!users)
+    return (
+      <Layout title="Hasura fetchPolicy">
+        <p>Page Not Found</p>
+      </Layout>
+    )
   return (
     <Layout title="Hasura fetchPolicy">
       <p className="mb-6 font-bold">Hasura main page</p>
