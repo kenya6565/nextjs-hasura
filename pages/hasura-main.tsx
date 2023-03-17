@@ -10,6 +10,8 @@ const FetchMain = () => {
     fetchPolicy: 'network-only',
     // fetchPolicy: 'cache-and-network',
     //fetchPolicy: 'cache-first',
+
+    // default when none is set
     //fetchPolicy: 'no-cache',
   })
   if (error)
