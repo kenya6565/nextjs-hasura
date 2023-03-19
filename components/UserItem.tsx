@@ -32,6 +32,19 @@ export default function UserItem({
       >
         Edit
       </button>
+      <button
+        className="py-1 px-3 text-white bg-pink-600 hover:bg-pink-700 rounded-2xl focus:outline-none"
+        data-testid={`delete-${user.id}`}
+        onClick={async () => {
+          await delete_users_by_pk({
+            variables: {
+              id: user.id,
+            },
+          })
+        }}
+      >
+        Delete
+      </button>
     </div>
   )
 }
