@@ -114,9 +114,18 @@ const HasuraCRUD = () => {
           type="text"
           value={editedUser.name}
           onChange={(e) =>
+            // every time putting user name in text area, renew user name by setEditedUser
             setEditedUser({ ...editedUser, name: e.target.value })
           }
         />
+        <button
+          disabled={!editedUser.name}
+          className="disabled:opacity-40 my-3 py-1 px-3 text-white bg-indigo-600 hover:bg-indigo-700 rounded-2xl focus:outline-none"
+          data-testid="new"
+          type="submit"
+        >
+          {editedUser.id ? 'Update' : 'Create'}
+        </button>
       </form>
     </Layout>
   )
