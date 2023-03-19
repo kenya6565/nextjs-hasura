@@ -14,11 +14,8 @@ interface Props {
     }>
   >
 }
-export default function UserItem({
-  user,
-  delete_users_by_pk,
-  setEditedUser,
-}: Props) {
+export function UserItem({ user, delete_users_by_pk, setEditedUser }: Props) {
+  //console.log('UserItem rendered')
   return (
     <div className="my-1">
       <p className="mr-2">{user.name}</p>
