@@ -23,6 +23,15 @@ export default function UserItem({
     <div className="my-1">
       <p className="mr-2">{user.name}</p>
       <p className="mr-2">{user.created_at}</p>
+      <button
+        className="mr-1 py-1 px-3 text-white bg-green-600 hover:bg-green-700 rounded-2xl focus:outline-none"
+        data-testid={`edit-${user.id}`}
+        onClick={() => {
+          setEditedUser(user)
+        }}
+      >
+        Edit
+      </button>
     </div>
   )
 }
