@@ -19,7 +19,8 @@ import {
 import { Layout } from '../components/Layout'
 
 const HasuraCRUD = () => {
-  const { data, error } = useQuery<GetUsersQuery>(GET_USERS, {
+  const [editedUser, setEditedUser] = useState({ id: '', name: '' })
+  const { data, loading, error } = useQuery<GetUsersQuery>(GET_USERS, {
     fetchPolicy: 'cache-and-network',
   })
 
@@ -67,9 +68,56 @@ const HasuraCRUD = () => {
     },
   })
 
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    // editing user mode when editedUser.id exists
+    if (editedUser.id) {
+      try {
+        await update_users_by_pk({
+          variables: {
+            id: editedUser.id,
+            name: editedUser.name,
+          },
+        })
+        // infer type of err when executing catch()
+      } catch (err: any) {
+        alert(err.message)
+      }
+      // when completing updating user, undo edited user
+      setEditedUser({ id: '', name: '' })
+
+      // creating new user mode when editedUser.id does not exist
+    } else {
+      try {
+        await insert_users_one({
+          variables: {
+            name: editedUser.name,
+          },
+        })
+      } catch (err: any) {
+        alert(err.message)
+      }
+      setEditedUser({ id: '', name: '' })
+    }
+  }
+  if (error) return <Layout title="Hasura CRUD">Error: {error.message}</Layout>
   return (
     <Layout title="Hasura CRUD">
       <p className="mb-3 font-bold">Hasura CRUD</p>
+      <form
+        className="flex flex-col justify-center items-center"
+        onSubmit={handleSubmit}
+      >
+        <input
+          className="px-3 py-2 border border-gray-300"
+          placeholder="New user ?"
+          type="text"
+          value={editedUser.name}
+          onChange={(e) =>
+            setEditedUser({ ...editedUser, name: e.target.value })
+          }
+        />
+      </form>
     </Layout>
   )
 }
