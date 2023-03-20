@@ -101,6 +101,7 @@ const HasuraCRUD = () => {
       setEditedUser({ id: '', name: '' })
     }
   }
+  if (loading) return <p>Loading...</p>
   if (error) return <Layout title="Hasura CRUD">Error: {error.message}</Layout>
   return (
     <Layout title="Hasura CRUD">
