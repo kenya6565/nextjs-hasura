@@ -5,6 +5,16 @@ import { GET_USERS } from '../queries/queries'
 import { GetUsersQuery, Users } from '../types/generated/graphql'
 import { Layout } from '../components/Layout'
 
+interface Props {
+  users: ({
+    __typename?: 'users'
+    // select only necessary fields
+  } & Pick<Users, 'id' | 'name' | 'created_at'>)[]
+}
+
+const HasuraSSG = ({ users: Props }) => {
+
+}
 export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo()
   const { data } = await apolloClient.query<GetUsersQuery>({
@@ -12,6 +22,7 @@ export const getStaticProps: GetStaticProps = async () => {
   })
   return {
     props: { users: data.users },
+    // make ISR valid
     revalidate: 1,
   }
 }
