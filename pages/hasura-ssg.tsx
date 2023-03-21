@@ -12,9 +12,25 @@ interface Props {
   } & Pick<Users, 'id' | 'name' | 'created_at'>)[]
 }
 
-const HasuraSSG = ({ users: Props }) => {
-
+// this users is from return value of getStaticProps
+const HasuraSSG = ({ users }: Props) => {
+  return (
+    <Layout title="Hasura SSG">
+      <p className="mb-3 font-bold">SSG+ISR</p>
+      {users?.map((user) => {
+        return (
+          <Link key={user.id} href={`/users/${user.id}`}>
+            <a className="my-1 cursor-pointer" data-testid={`link-${user.id}`}>
+              {user.name}
+            </a>
+          </Link>
+        )
+      })}
+    </Layout>
+  )
 }
+export default HasuraSSG
+
 export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo()
   const { data } = await apolloClient.query<GetUsersQuery>({
