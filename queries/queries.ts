@@ -30,6 +30,7 @@ export const GET_USERIDS = gql`
 `
 // GET_USERBY_ID returns users_by_pk
 export const GET_USERBY_ID = gql`
+  # this GetUserById is based on type GetUserByIdQuery
   query GetUserById($id: uuid!) {
     users_by_pk(id: $id) {
       id
