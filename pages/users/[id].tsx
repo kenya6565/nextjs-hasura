@@ -10,6 +10,19 @@ import {
 } from '../../types/generated/graphql'
 import { Layout } from '../../components/Layout'
 
+interface Props {
+  user: {
+    __typename?: 'users'
+  } & Pick<Users, 'id' | 'name' | 'created_at'>
+}
+
+export const UserDetail = ({ user }: Props) => {
+  if (!user) {
+    return <Layout title="loading">Loading...</Layout>
+  }
+}
+export default UserDetail
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const apolloClient = initializeApollo()
   // get user list using graphql query
