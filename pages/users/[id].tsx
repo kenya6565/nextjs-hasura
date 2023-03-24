@@ -20,6 +20,26 @@ export const UserDetail = ({ user }: Props) => {
   if (!user) {
     return <Layout title="loading">Loading...</Layout>
   }
+  return (
+    <Layout title={user.name}>
+      <p className="text-xl font-bold">User detail</p>
+      <p className="m-4">
+        {'ID : '}
+        {user.id}
+      </p>
+      <p className="mb-4 text-xl font-bold">{user.name}</p>
+      <p className="mb-12">{user.created_at}</p>
+      <Link href="/hasura-ssg">
+        <div className="flex cursor-pointer mt-12">
+          <ChevronDoubleLeftIcon
+            data-testid="auth-to-main"
+            className="h-5 w-5 mr-3 text-blue-500"
+          />
+          <span data-testid="back-to-main">Back to main-ssg-page</span>
+        </div>
+      </Link>
+    </Layout>
+  )
 }
 export default UserDetail
 
