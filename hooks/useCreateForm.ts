@@ -3,4 +3,7 @@ import { useMutation } from '@apollo/client'
 import { CREATE_USER } from '../queries/queries'
 import { CreateUserMutation } from '../types/generated/graphql'
 
-export const useCreateForm = () => {}
+export const useCreateForm = () => {
+  const [text, setText] = useState('')
+  const [username, setUsername] = useState('')
+}
