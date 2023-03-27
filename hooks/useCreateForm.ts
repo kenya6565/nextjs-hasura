@@ -55,4 +55,12 @@ export const useCreateForm = () => {
     },
     [username]
   )
+  return {
+    text,
+    handleSubmit,
+    username,
+    usernameChange,
+    printMsg,
+    handleTextChange,
+  }
 }
