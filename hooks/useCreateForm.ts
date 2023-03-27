@@ -27,4 +27,10 @@ export const useCreateForm = () => {
       })
     },
   })
+  const handleTextChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value)
+  }, [])
+  const usernameChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setUsername(e.target.value)
+  }, [])
 }
