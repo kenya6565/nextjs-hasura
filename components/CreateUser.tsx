@@ -1,5 +1,6 @@
 import React from 'react'
 import { useCreateForm } from '../hooks/useCreateForm'
+import Child from './Child'
 
 const CreateUser = () => {
   // get return value of useCreateForm
@@ -44,6 +45,7 @@ const CreateUser = () => {
           Submit
         </button>
       </form>
+      <Child printMsg={printMsg} />
     </>
   )
 }
