@@ -1,9 +1,11 @@
 import { ChangeEvent, FormEvent, memo, VFC } from 'react'
 
-const Child = () => {
-  return (
-    <div>Child</div>
-  )
+interface Props {
+  printMsg: () => void
+}
+
+const Child = ({ printMsg }) => {
+  return <div>Child</div>
 }
 
 export default Child
