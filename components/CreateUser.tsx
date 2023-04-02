@@ -45,7 +45,7 @@ const CreateUser = () => {
           Submit
         </button>
       </form>
-      <Child printMsg={printMsg} />
+      <Child printMsg={printMsg} handleSubmit={handleSubmit}/>
     </>
   )
 }

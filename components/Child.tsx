@@ -2,10 +2,11 @@ import { ChangeEvent, FormEvent, memo, VFC } from 'react'
 
 interface Props {
   printMsg: () => void
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void>
 }
 
 // eslint-disable-next-line react/display-name
-const Child = memo(({ printMsg }: Props) => {
+const Child = memo(({ printMsg, handleSubmit }: Props) => {
   return (
     <>
       {console.log('Child rendered')}
