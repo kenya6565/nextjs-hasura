@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, memo, VFC } from 'react'
+import { FormEvent, memo } from 'react'
 
 interface Props {
   printMsg: () => void
